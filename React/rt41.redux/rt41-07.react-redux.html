@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <xmp>
+        ReactRedux.Provider 컴포넌트를 사용하여 Redux의 subscribe() 메서드를 대체하는 방법을 학습한다.
+        Redux.subscribe()  ==> ReactRedux.Provider
+
+        React-Redux 작성 순서
+        0. React-Redux 플러그인 추가 or import.
+        1. 컴포넌트 만들기
+        2. action상수/action함수 만들기. action상수에는 접두사를 붙인다.
+        3. state  만들기
+        4. reducer 만들기. 예시) reducerTasks(state = initialState, action)
+        5. store 만들기. Redux.createStore(리듀서)
+        6. mapStateToProps 함수 만들기
+        7. mapDispatchToProps 함수 만들기
+        8. ReactRedux.connect()()로 store와 컴포넌트 연결
+        9. ReactRedux.Provider 설정
+
+    </xmp>
+
+    <div id="app">
+
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
