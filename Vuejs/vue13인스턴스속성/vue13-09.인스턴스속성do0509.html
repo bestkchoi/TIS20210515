@@ -83,3 +83,50 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            mesg1: null,
+            mesg3: null
+        },
+        //template: ``,
+        methods: {
+            msgKey : function(event){
+                console.log(event.target.value);
+
+               //  this.$data.mesg1 = event.target.value;
+                this.$set(  this.$data  , "mesg1"  ,  event.target.value  );
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+            /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+            mesg2 : function ( ) {
+                return this.$data.mesg1 + " computed 에서 생성된 값";
+            }
+        },
+        watch: {
+            /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+            mesg1: function (value) {
+                // this.$data.mesg3 = value; // value === this.$data.mesg1
+                this.$set(  this.$data  ,  "mesg3" , value  + " watch 에서 생성된 값" );
+            }
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>

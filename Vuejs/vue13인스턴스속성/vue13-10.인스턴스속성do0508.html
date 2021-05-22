@@ -63,3 +63,49 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    data: {
+        message: null,
+        methodscopy : null,
+        watchcopy : null,
+        /* computedcopy : null */
+    },
+    //template: ``,
+    methods: {
+        reverseMsg : function (params) {
+          //  this.$data.methodscopy = this.$data.message;
+          this.$set( this.$data , "methodscopy" , this.$data.message );
+        }
+    },
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+    },
+    computed: {
+        /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+        computedcopy : function ( ) {
+            return this.$data.message + " computed에서 생성";
+        }
+    },
+    watch: {
+        /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+        message : function (value) {
+         this.$set( this.$data, "watchcopy", value );
+                // this.$data.watchcopy = value; // value === this.$data.message;
+        }
+    },
+    mounted: function() {
+        console.log("mounted");
+    },
+    updated: function() {
+        console.log("updated");
+    },
+});
+
+</script>

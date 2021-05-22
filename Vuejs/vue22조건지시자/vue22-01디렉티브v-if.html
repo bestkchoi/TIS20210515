@@ -105,3 +105,68 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app1",
+        data: {
+            awesome: true,
+        },
+    });
+    new Vue({
+        /* edtmc^2w */
+        el: "#app2",
+        data: {
+            awesome: false,
+        },
+    });
+    new Vue({
+        /* edtmc^2w */
+        el: "#app3",
+        data: {
+            awesome: false,
+        },
+        //template: ``,
+        methods: {
+            clickBind: function (event) {
+                // <방법1>
+                // if ( this.$data.awesome ===true ){
+                //     this.$data.awesome = false
+                // } else if ( this.$data.awesome === false){
+                //     this.$data.awesome = true
+                // }
+                // <방법2>
+                // this.$data.awesome = !this.$data.awesome;
+                this.$set(  this.$data  , "awesome"  ,  !this.$data.awesome )
+            }
+        },
+    });
+
+    new Vue({
+        /* edtmc^2w */
+        el: "#app5",
+        data: {
+            type: 0
+        },
+        //template: ``,
+        methods: {
+            clickBind: function (event) {
+                /*
+                // 방법1
+                if( this.$data.type === 4){
+                    this.$data.type = 0;
+                }
+                else {
+                    this.$data.type = this.$data.type + 1
+                } */
+                //방법2
+                // this.$data.type = ( this.$data.type + 1) % 4;
+                this.$set(  this.$data ,  "type" , ( this.$data.type + 1) % 4 );
+            }
+        },
+    });
+
+</script>
