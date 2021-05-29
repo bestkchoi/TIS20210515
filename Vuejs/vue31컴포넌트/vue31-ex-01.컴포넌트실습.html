@@ -78,35 +78,87 @@
 
     <div id="app">
         <!-- component-header -->
-        <header>
-            Header
-        </header>
-        
+            <component-header></component-header>
+
         <!-- component-content -->
-        <div id="content">
-            <p>Content</p>
-            
-            <!-- component-aside -->
-            <aside>
-                Aside
-            </aside>
-            
-            <!-- component-content-list -->
-            <div id="content-list">
-                List
-            </div>
-        </div>
-        
+            <component-content></component-content>
+
         <!-- component-footer -->
-        <footer>
-            Footer
-        </footer>
+            <component-footer></component-footer>
     </div>
 
-    
+
 
 </body>
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+
+var componentHeader = {
+    /* pdtmc^2w */
+    template: `
+    <header>
+            Header
+        </header>
+    `,
+};
+
+var componentAside = {
+    template: `
+                <aside>
+                    Aside
+                </aside>
+    `,
+};
+
+var componentList = {
+    template: `
+            <div id="content-list">
+                List
+            </div>
+    `,
+};
+
+var componentContent = {
+    template: `
+        <div id="content">
+            <p>Content</p>
+            <component-aside></component-aside>
+            <component-list></component-list>
+        </div>
+    `,
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+        "component-aside" : componentAside,
+        "component-list" : componentList,
+
+    },
+};
+
+var componentFooter = {
+    /* pdtmc^2w */
+    template: `
+        <footer>
+            Footer
+        </footer>
+    `,
+};
+
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+        "component-header" : componentHeader,
+        "component-content" : componentContent,
+        "component-footer" : componentFooter,
+    },
+});
+
+
+</script>

@@ -47,4 +47,51 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+
+var componentTop = {
+    props: [
+        "propsdata",
+    ] ,
+    template: `
+        <p>{{ propsdata }}</p>
+    `,
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+    },
+};
+
+var componentBottom= {
+    props: [
+        "propsdata",
+    ] ,
+    template: `
+        <p>{{ propsdata }}</p>
+    `,
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+    },
+};
+
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    data: {
+        msgTop : "Top message!!! passed from Parent Component",
+        msgBtm : "Bottom message!!! passed from Parent Component",
+    },
+    //template: ``,
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+        "component-top" : componentTop,
+        "component-bottom" : componentBottom,
+    },
+});
+
+
+</script>

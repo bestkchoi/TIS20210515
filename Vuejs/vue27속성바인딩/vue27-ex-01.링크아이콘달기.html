@@ -85,18 +85,18 @@
         <h1>Adding Icons to Links</h1>
         <p>Here's a list of downloadable files:</p>
         <ul class="icon-links">
-            <li v-on:click="click1"><a v-bind:class="idA" href="presentation.ppt">Presentation slides</a></li>
-            <li><a href="video.mp4">Video of presentation</a></li>
-            <li><a href="notes.pdf">Notes for presentation</a></li>
-            <li><a href="icons.gif">GIF Icon sprite</a></li>
-            <li><a href="icons.png">PNG Icon sprite</a></li>
-            <li><a href="icons.jpg">PNG Icon sprite</a></li>
-            <li><a href="fuyyu.ppt">Presentation slides</a></li>
-            <li><a href="fyyuy.mp4">Video of presentation</a></li>
-            <li><a href="uydyuflk.pdf">Notes for presentation</a></li>
-            <li><a href="OIP.gif">GIF Icon sprite</a></li>
-            <li><a href="ID7890IO.png">PNG Icon sprite</a></li>
-            <li><a href="PFDY.jpg">PNG Icon sprite</a></li>
+            <li><a v-on:click="aclick" href="presentation.ppt">Presentation slides</a></li>
+            <li><a v-on:click="aclick" href="video.mp4">Video of presentation</a></li>
+            <li><a v-on:click="aclick" href="notes.pdf">Notes for presentation</a></li>
+            <li><a v-on:click="aclick" href="icons.gif">GIF Icon sprite</a></li>
+            <li><a v-on:click="aclick" href="icons.png">PNG Icon sprite</a></li>
+            <li><a v-on:click="aclick" href="icons.jpg">PNG Icon sprite</a></li>
+            <li><a v-on:click="aclick" href="fuyyu.ppt">Presentation slides</a></li>
+            <li><a v-on:click="aclick" href="fyyuy.mp4">Video of presentation</a></li>
+            <li><a v-on:click="aclick" href="uydyuflk.pdf">Notes for presentation</a></li>
+            <li><a v-on:click="aclick" href="OIP.gif">GIF Icon sprite</a></li>
+            <li><a v-on:click="aclick" href="ID7890IO.png">PNG Icon sprite</a></li>
+            <li><a v-on:click="aclick" href="PFDY.jpg">PNG Icon sprite</a></li>
         </ul>
     </div>
     <hr>
@@ -120,32 +120,51 @@ new Vue({
     },
     //template: ``,
     methods: {
-        click1 : function (event) {
-            var href = event.target.href;
-            var ext = href.substr(-3);
+        aclick : function (event) {
 
-            this.$data.idA = "presentation";
-            event.preventDefault()
-            event.stopPropagation()
+            //==> 클릭된 a 태그의 href 속성값을 어떻게 얻을 수 있나?
+                var href = event.target.href;
+
+            //==> 클릭된 a 태그의 href 속성값에서 파일의 확장자를 어떻게 얻을 수 있나 ?
+            //    // href 의 마지막 3개 글자 추출하기 : substr()
+                var ext = href.substr(-3); // href.substr(href.lenght-3, 3);
+
+            //    파일의 확장자가 ppt 이면 a.presentation 적용
+            //    파일의 확장자가 mp4 이면 a.video 적용
+            //    파일의 확장자가 pdf 이면 a.pdf 적용
+            //    파일의 확장자가 gif 이면 a.image 적용
+            //    파일의 확장자가 png 이면 a.image 적용
+            //    파일의 확장자가 jpg 이면 a.image 적용
+                var cname = " ";
+                if ( ext === "ppt" ){
+                    cname = "presentation";
+                }
+                else if ( ext === "mp4" ){
+                    cname = "video";
+                }
+                else if ( ext === "pdf" ){
+                    cname = "pdf";
+                }
+                else if ( ext === "gif" ){
+                    cname = "image";
+                }
+                else if ( ext === "png" ){
+                    cname = "image";
+                }
+                else ( ext === "jpg" ){
+                    cname = "image";
+                }
+
+            //==> event.target에 class 속성 추가
+            //    예시) event.target.class = "presentation"; <== 이런 식으로하면되는데.
+            //    html 의 class 속성을 javascript에서 사용하려면 어떻게?
+                event.target.className = cname;
+
+            //==> a 태그의 리다이렉트 이벤트 취소 기능 필요
+                event.preventDefault()
+                event.stopPropagation()
+
         }
-    },
-    components: {
-        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
-
-    },
-    computed: {
-        /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
-
-    },
-    watch: {
-        /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
-
-    },
-    mounted: function() {
-        console.log("mounted");
-    },
-    updated: function() {
-        console.log("updated");
     },
 });
 

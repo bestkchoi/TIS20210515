@@ -60,4 +60,99 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+    //  전역 컴포넌트 만들기
+        Vue.component("global-component", {
+            /* pdtmc^2w */
+            props: [
+                "propsdata"
+            ] ,
+            template: `
+            <div>
+                전역 컴포넌트
+                <button v-on:click="gclick">{{propsdata}}</button>
+            </div>
+            `,
+            methods: {
+                gclick: function (event) {
+                    console.log(event.target);
+                    alert(event.target.innerHTML);
+                }
+            },
+
+        });
+
+
+    // 지역 컴포넌트 만들기
+        var localComponent = {
+            /* pdtmc^2w */
+            props: [
+                "localmsg"
+            ] ,
+            data: function() {
+                return {
+
+                }
+            },
+            template: `
+                <div>
+                    지역 컴포넌트가 등록되었습니다!
+                    <span style="border: 1px dashed blue; background-color:lightgray; padding: 5px;"
+                        v-on:click="lclick">
+                        {{localmsg}}
+                    </span>
+                </div>
+            `,
+            methods: {
+                lclick: function (event) {
+                    console.log(event.target);
+                    alert(event.target.innerHTML);
+                }
+            },
+            components: {
+                /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+            },
+            computed: {
+                /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+
+            },
+            watch: {
+                /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+
+            },
+            mounted: function() {
+                console.log("mounted");
+            },
+            updated: function() {
+                console.log("updated");
+            },
+        };
+
+
+
+
+
+
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    data: {
+        globalmsg1: "인스턴스에서 전역 컴포넌트도 넘겨진 메시지 1",
+        globalmsg2 : "인스턴스에서 전역 컴포넌트도 넘겨진 메시지 2",
+        localmsg1 : "인스턴스에서 지역 컴포넌트도 넘겨진 메시지 1",
+        localmsg2 : "인스턴스에서 지역 컴포넌트도 넘겨진 메시지 2",
+    },
+
+    components: {
+        /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+        "local-component" : localComponent,
+    },
+
+});
+
+</script>
