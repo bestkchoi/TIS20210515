@@ -104,15 +104,15 @@
               v-on:mouseup  = "spanmouseup"
               v-on:mouseout = "spanmouseout" >
         </span>
-        <span mouseover= "spanmouseover"
-              mousedown= "spanmousedown"
-              mouseup  = "spanmouseup"
-              mouseout = "spanmouseout" >
+        <span v-on:mouseover= "spanmouseover"
+              v-on:mousedown= "spanmousedown"
+              v-on:mouseup  = "spanmouseup"
+              v-on:mouseout = "spanmouseout" >
         </span>
-        <span mouseover= "spanmouseover"
-              mousedown= "spanmousedown"
-              mouseup  = "spanmouseup"
-              mouseout = "spanmouseout">
+        <span v-on:mouseover= "spanmouseover"
+              v-on:mousedown= "spanmousedown"
+              v-on:mouseup  = "spanmouseup"
+              v-on:mouseout = "spanmouseout" >
         </span>
         <hr />
 
@@ -124,13 +124,13 @@
             "vue23-01.v-for와배열.html" 를 참조하여 option 부분을 v-for 를 사용하도록 수정하시오.
 
         </xmp>
-        <select id="sel" change="selectchange">
+        <select id="sel" v-on:change="selectchange">
             <option value="../images/strawberry.gif">딸기</option>
             <option value="../images/banana.gif">바나나</option>
             <option value="../images/apple.gif" selected>사과</option>
         </select>
 
-        <img id="img" src="img_select" />
+        <img id="img" v-bind:src="img_select" />
         <hr />
 
         <xmp>
@@ -144,7 +144,7 @@
 
     </div>
 
-
+    </script>
 
 </body>
 
@@ -161,44 +161,77 @@ new Vue({
         img_image3 : null,
         img_but1 : "../images/but1.gif",
         img_swap : "../images/img_swap_off.png",
-
+        img_select : null,
     },
-   //  template: ``,
+    // template: ``,
     methods: {
         imageclick : function (event) {
             console.log(event.target.href);
-            this.$data.img_image3 = event.target.href;
+            // this.$data.img_image3 = event.target.href;
+            this.$set(this.$data, img_image3, event.target.href );
+
             // 리디렉트 이벤트 취소
-            event.preventDefault();
-            event.stopPropagation();
+            event.preventDefault(); // 리다이렉트 막기
+            event.stopPropagation(); // 버블링 막기
         },
 
         imageover : function (event) {
-            console.log(event.target.src);
-            this.$data.img_but1 = "../images/but2.gif";
-            this.$data.img_swap = "../images/img_swap_on.png";
+            console.log(event.target);
+
+            if ( event.target.id === "but1"){
+                this.$data.img_but1 = "../images/but2.gif";
+            }
+            else if ( event.target.id === "img-swap"){
+                this.$data.img_swap = "../images/img_swap_on.png";
+            }
         },
 
         imageout : function (event) {
-            this.$data.img_but1 = "../images/but1.gif";
-            this.$data.img_swap = "../images/img_swap_off.png";
+            console.log(event.target);
+
+            if ( event.target.id === "but1"){
+                this.$data.img_but1 = "../images/but1.gif";
+            }
+            else if ( event.target.id === "img-swap"){
+                this.$data.img_swap = "../images/img_swap_off.png";
+            }
         },
 
         spanmouseover : function (event) {
+            console.log(event.target);
             event.target.style.backgroundColor = "yellow" ;
         },
 
         spanmousedown : function (event) {
-            event.target.style.backgroundColor = "blue" ;
+            console.log(event.target);
+            // <span style="background-color: yellow">
+            // event.target.style = "background-color: yellow";
+            event.target.style.backgroundColor = "yellow";
+            event.target.style = {
+                // "background-color: yellow"
+                "background-color" : "yellow",
+                backgroundColor : "yellow",
+            }
         },
 
         spanmouseup : function (event) {
-            event.target.style.backgroundColor = "pink" ;
+            console.log(event.target);
+            event.target.style.backgroundColor = "pink";
         },
 
         spanmouseout : function (event) {
-            event.target.style.backgroundColor = "red" ;
+            console.log(event.target);
+            event.target.style.backgroundColor = "blue";
+        },
+
+        selectchange : function (event) {
+            console.log(event.targt);
+
+            // selected 값을 가져오기 싶은데 어떻게?
+            // this.$data.img_select =  event.tareget.value;
+            this.$set(this.$data, img_select , event.tareget.value);
         }
+
 
     },
     components: {

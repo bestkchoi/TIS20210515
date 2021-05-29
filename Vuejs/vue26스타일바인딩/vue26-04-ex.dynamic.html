@@ -68,4 +68,53 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    data: {
+        state : "rdady",
+
+    },
+    //template: ``,
+    methods: {
+        change : function (event) {
+            if ( this.$data.state === "done" ){
+                this.$data.state = "ready";
+            }
+            else if ( this.$data.state === "ready" ){
+                this.$data.state = "active";
+            }
+            else if ( this.$data.state === "active" ){
+                this.$data.state = "done";
+            }
+
+
+        }
+    },
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+    },
+    computed: {
+        /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+        msg : function ( ) {
+            return this.$data.state;
+        }
+    },
+    watch: {
+        /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+
+    },
+    mounted: function() {
+        console.log("mounted");
+    },
+    updated: function() {
+        console.log("updated");
+    },
+});
+
+</script>

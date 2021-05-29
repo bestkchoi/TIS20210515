@@ -136,3 +136,64 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "example3",
+        data: {
+            style1 : null,
+        },
+        //template: ``,
+        methods: {
+            clickArrow: function (evnet) {
+                /*
+                    height: "50px",
+                    width: "150px",
+                    border: "1px solid black",
+                    text-align: center;
+                    line-height: 50px;
+                    font-weight: 800;
+                    color: red;
+                    background-color: darkgoldenrod;
+                    padding: 50px;
+                */
+                var obj = {
+                    height: "50px",
+                    width: "150px",
+                    border: "1px solid black",
+                    text-align: center;
+                    line-height: 50px;
+                    font-weight: 800;
+                    color: red;
+                    background-color: darkgoldenrod;
+                    padding: 50px;
+                }
+
+                // this.$data.style1 = obj;
+                this.$set(this.$data,style1,obj );
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+            /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+
+        },
+        watch: {
+            /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>
