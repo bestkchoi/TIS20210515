@@ -85,7 +85,7 @@
         <h1>Adding Icons to Links</h1>
         <p>Here's a list of downloadable files:</p>
         <ul class="icon-links">
-            <li><a href="presentation.ppt">Presentation slides</a></li>
+            <li v-on:click="click1"><a v-bind:class="idA" href="presentation.ppt">Presentation slides</a></li>
             <li><a href="video.mp4">Video of presentation</a></li>
             <li><a href="notes.pdf">Notes for presentation</a></li>
             <li><a href="icons.gif">GIF Icon sprite</a></li>
@@ -101,11 +101,53 @@
     </div>
     <hr>
 
-    
+
 
 </body>
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    data: {
+        idA : null,
+    },
+    //template: ``,
+    methods: {
+        click1 : function (event) {
+            var href = event.target.href;
+            var ext = href.substr(-3);
+
+            this.$data.idA = "presentation";
+            event.preventDefault()
+            event.stopPropagation()
+        }
+    },
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+    },
+    computed: {
+        /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+
+    },
+    watch: {
+        /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+
+    },
+    mounted: function() {
+        console.log("mounted");
+    },
+    updated: function() {
+        console.log("updated");
+    },
+});
+
+</script>
 
