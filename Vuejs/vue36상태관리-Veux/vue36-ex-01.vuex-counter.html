@@ -117,6 +117,51 @@ var store = new Vuex.Store({
 });
 
 
+var componentChild = {
+    /* pdtmc^2w */
+    props: [] ,
+    data: function() {
+        return {
+           // num: 0,
+        }
+    },
+    template: `
+        <div class="component-child">
+              Child counter : {{ num }} <br>
+              <button name="child" v-on:click="addCounter">+</button>
+              <button name="child" v-on:click="subCounter">-</button>
+        </div>
+    `,
+    methods: {
+        addCounter : function (event) {
+            store.dispatch("addCounter", +1);
+        },
+        subCounter : function (event) {
+            store.dispatch("subCounter", -1);
+        },
+    },
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+    },
+    computed: {
+        /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+        num: function () {
+            return store.getters.counter;
+        }
+    },
+    watch: {
+        /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+
+    },
+    mounted: function() {
+        console.log("mounted");
+    },
+    updated: function() {
+        console.log("updated");
+    },
+};
+
 
 new Vue({
     /* edtmc^2w */
@@ -138,7 +183,7 @@ new Vue({
     },
     components: {
         /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
-
+            "component-child": componentChild,
     },
     computed: {
         /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
