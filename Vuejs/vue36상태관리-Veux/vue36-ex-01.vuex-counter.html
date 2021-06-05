@@ -78,4 +78,85 @@
 
 </html>
 
+
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script src="https://unpkg.com/vuex@3.3.0/dist/vuex.js"> /* vuex 플러그인 임포트 */</script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"> /* axios 플러그인 임포트 */</script>
+<script>
+
+var store = new Vuex.Store({
+    actions : {
+        addCounter : function (mutations, param) {
+        // this.$data.counter = this.$data.counter + param;
+        mutations.commit("addCounter", param )
+        },
+
+        subCounter : function (mutations, param) {
+        // this.$data.counter = this.$data.counter + param;
+        mutations.commit("subCounter", param )
+        },
+    },
+    mutations : {
+        addCounter : function (state, param) {
+        state.counter = state.counter + param;
+        },
+
+        subCounter : function (state, param) {
+        state.counter = state.counter + param;
+        },
+    },
+    state : {
+        counter : 0,
+    },
+    getters : {
+        counter: function (state) {
+                return state.counter;
+            },
+    }
+});
+
+
+
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    data: {
+        // counter : 0,
+    },
+    //template: ``,
+    methods: {
+        addCounter : function (event, param) {
+            // this.$data.counter = this.$data.counter + param;
+            store.dispatch("addCounter", param);
+        },
+
+        subCounter : function (event, param) {
+            // this.$data.counter = this.$data.counter - param;
+            store.dispatch("subCounter", param );
+        },
+    },
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+    },
+    computed: {
+        /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+        counter: function () {
+            return store.getters.counter;
+        }
+    },
+    watch: {
+        /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+
+    },
+    mounted: function() {
+        console.log("mounted");
+    },
+    updated: function() {
+        console.log("updated");
+    },
+});
+
+
+</script>
