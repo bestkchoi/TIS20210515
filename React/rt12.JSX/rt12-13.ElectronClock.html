@@ -88,11 +88,18 @@ class ElectronClock extends React.Component {
         )
     }
 };
-//export default rt12-13.ElectronClock;
-ReactDOM.render(
+
+    window.setInterval(
+        ( ) => {
+        ReactDOM.render(
         <ElectronClock></ElectronClock>
         ,
         document.getElementById("app")
 )
+}
+    ,1000
+    );
+//export default rt12-13.ElectronClock;
+
 
 </script>
