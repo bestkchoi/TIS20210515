@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-
-    <link rel="stylesheet" href="../css/reset.css"/>
-
-</head>
-
-<body>
-    <xmp>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible"
+            content="ie=edge" />
+        <title>Document</title>
+        <link rel="stylesheet"
+            href="../css/reset.css" />
+    </head>
+    <body>
+        <xmp>
         작성  순서
             단계1: React 객체 스크립트 플러그인 추가 or 객체 import
             단계2. React 객체 import 여부 확인
@@ -34,30 +33,55 @@
 
         render() 에서 사용할 JSX
         <div>
-            <King name="세종대왕">
-                <span>a</span>
-            </King>
-            <King name="이순신">
-                <span>b</span>
-            </King>
-            <King name="광개토">
-                <span>c</span>
-            </King>
-            <King name="왕건">
-                <span>d</span>
-            </King>
+
         </div>
     </xmp>
-    <hr>
-
-    <div id="app">
-        <h3>세종대왕</h3>
-        <h3>이순신</h3>
-        <h3>광개토</h3>
-        <h3>왕건</h3>
-	</div>
-</body>
-
+        <hr>
+        <div id="app">
+        </div>
+    </body>
 </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script type="text/babel">
 
+    //import React, {Component, PureComponent, Fragment} from "react";
+    //import Redux from "redux";
+    //import ReactRedux, {Provider} from "react-redux";
+    //import {BrowserRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom";
+    //import ReactDOM from "react-dom";
 
+    console.log(React);
+
+    class King extends React.Component {
+        render() { // JSX로 화면 만들기
+            return (
+                <h3>{this.props.name}</h3>
+            )
+        }
+    };
+    //export default King;
+
+    ReactDOM.render(
+
+    <div>
+        {
+                ["세종대왕", "이순신", "광개토", "왕건"].map( (value,index)=>{
+                    return  (
+                        <King name={value}>
+                            <span>a</span>
+                        </King>
+                    )
+                })
+            }
+    </div>
+        , document.getElementById("app")
+    )
+</script>

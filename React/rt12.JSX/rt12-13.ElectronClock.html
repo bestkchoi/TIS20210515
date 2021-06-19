@@ -19,8 +19,8 @@
     2. JSX 에서 style 작성법을 학습한다.     
        font-size: 80pt
     3. 현재 시간 얻는 방법:
-        hms = new Date().toLocaleTimeString(); 
-        또는 
+        hms = new Date().toLocaleTimeString();
+        또는
         const d = new Date();
         const h = d.getHours();
         const m = d.getMinutes();
@@ -52,3 +52,47 @@
 </body>
 
 </html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script type="text/babel">
+
+//import React, {Component, PureComponent, Fragment} from "react";
+//import Redux from "redux";
+//import ReactRedux, {Provider} from "react-redux";
+//import {BrowserRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom";
+//import ReactDOM from "react-dom";
+
+console.log(React);
+
+class ElectronClock extends React.Component {
+    style = {
+        style1 : {
+            fontSize : "80pt",
+        }
+    }
+
+    render() { // JSX로 화면 만들기
+        const hms = new Date().toLocaleTimeString( );
+        return (
+            <div style={this.style.style1}>
+                    {hms}
+            </div>
+        )
+    }
+};
+//export default rt12-13.ElectronClock;
+ReactDOM.render(
+        <ElectronClock></ElectronClock>
+        ,
+        document.getElementById("app")
+)
+
+</script>

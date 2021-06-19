@@ -19,4 +19,31 @@
 </html>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+
+<script type="text/babel">
+    const car = {
+        type: "t",
+        color: "s",
+        model: 2017
+    }
+    console.log(car);
+
+    // ES5
+    const type1 = car.type;
+    console.log(type1);
+
+    // ES6
+    const {type, color, model, gear} = car;
+    console.log(type, color, model, gear); // t, s, 2017, undefined
+
+    // {color} = car
+    onst func = function ({color}) {
+        console.log(color);
+    }
+    func( car ); // s
+</script>
+
 

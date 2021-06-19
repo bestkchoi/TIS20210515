@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>조건부 렌더링</title>
+
+    <link rel="stylesheet" href="../css/reset.css"/>
+</head>
+
+<body>
+    <xmp>
+        JSX 안세어 조건부 렌더링 방법을 학습한다.
+
+        아래 사이트의 코드를 이용하여 클래스 컴포넌트를 만들어 본다.
+        참고: https://reactjs.org/docs/conditional-rendering.html
+
+        function Mailbox(props) {
+            const unreadMessages = props.unreadMessages;
+            return (
+              <div>
+                <h1>Hello!</h1>
+                {unreadMessages.length > 0 &&
+                  <h2>
+                    You have {unreadMessages.length} unread messages.
+                  </h2>
+                }
+              </div>
+            );
+          }
+
+          const messages = ['React', 'Re: React', 'Re:Re: React'];
+          ReactDOM.render(
+            <Mailbox unreadMessages={messages} />,
+            document.getElementById('root')
+          );
+
+    </xmp>
+    <hr>
+
+    <div id="app"></div>
+</body>
+
+</html>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.2.0/react-router-dom.min.js">
+    /*  import ReactRouterDOM, {BroswerRouter,Switch,Router,Route,IndexRoute,Link,IndexLink,NavLink} from "react-router-dom" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.js">
+    /* import Redux from "redux" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.2/react-redux.js">
+    /*  import ReactRedux, {Provider} from "react-redux" */
+</script>
+<script src="https://unpkg.com/immer">
+    /* 불변객체 state를 조작하는 라이브러리 */
+    /* import immer from "immer" */
+</script>
+<script type="text/babel">
+
+console.log(React);
+
+class Mailbox extends React.Component {
+    render() { // JSX로 화면 만들기
+      const {unreadMessages} = this.props;
+        return (
+            <div>
+              <h1>hello!</h1>
+
+              { /*조건문 연산자 사용하는 경우 */ }
+              { unreadMessages != null && unreadMessages.length  > 0 ?
+                  (
+                      <h2>
+                              you have {unreadMessages.length} unread messages.
+                      </h2>
+                  )
+                :
+                ' '
+             }
+
+             {/* and 연산자를 사용하는 경우 */}
+             { unreadMessages != null && unreadMessages.length  > 0 &&
+                    (
+                          <h2>
+                                  you have {unreadMessages.length} unread messages.
+                          </h2>
+                    )
+              }
+            </div>
+        )
+    }
+};
+//export default Mailbox;
+
+const messages = [ 'React', 'Re: React', 'Re:Re: React' ];
+          // const messages = ['React', 'Re: React', 'Re:Re: React'];
+          ReactDOM.render(
+            <Mailbox unreadMessages={messages} />
+            ,
+            document.getElementById('app')
+
+</script>
+

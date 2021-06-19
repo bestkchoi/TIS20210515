@@ -29,3 +29,44 @@
 </body>
 
 </html>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script type="text/babel">
+class Todo extends React.Component {
+    render() { // JSX로 화면 만들기
+        return (
+                <div>
+                    {
+                        this.props.todoList.map( (value, index, array ) => {
+                            return (
+                                <li key={ index }>{ value.taskName } </li>
+                            )
+                        })
+                    }
+                </div>
+            )
+        }
+    };
+
+    const todoList = [
+        { taskName: "빨래하기", finished: false },
+        { taskName: "공부하기", finished: true },
+        { taskName: "게임하기", finished: true },
+    ];
+
+    ReactDOM.render(
+        <Todo todoList={ todoList }></Todo>
+        ,
+        document.getElementById("app")
+    )
+</script>
+
