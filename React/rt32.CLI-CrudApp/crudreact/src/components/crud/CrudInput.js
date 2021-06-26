@@ -1,9 +1,5 @@
 import React, {Component, PureComponent, Fragment} from "react";
 
-
-import CrudList from './CrudList'
-import CrudInput from './CrudInput'
-
 class CrudInput extends React.Component {
 
     static defaultProps = {  /*  props의 디폴트 값 설정 */  }
